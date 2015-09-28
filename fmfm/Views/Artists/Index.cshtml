@@ -1,0 +1,46 @@
+﻿
+@model fmfm.Models.ArtistsViewModel
+
+@{
+    ViewBag.Title = "fmfm";
+}
+
+<h2>fmfm</h2>
+
+@using (Html.BeginForm("Index", "Artists"))
+{
+	<textarea cols="100" rows="10" class="FormElement" name="ArtistInput" id="Artist_Input" style="width:500px;height:200px;">@(Model.ArtistInput)</textarea>
+	<br />
+	<input type="submit" value="Bum!" />
+}
+
+<br />
+
+@if (Model != null && Model.Artists != null && Model.Artists.Count > 0)
+{
+	<table style="border-collapse:collapse;">
+		<thead>
+			<tr>
+				<th style="width:250px;">Artist</th>
+				<th style="width:100px;text-align:right;">@Html.ActionLink("Listeners", "Order", "Artists", new { by = "listeners" }, null)</th>
+				<th style="width:100px;text-align:right;">@Html.ActionLink("PlayCount", "Order", "Artists", new { by = "playCount" }, null)</th>
+				<th style="width:500px;">Tags</th>
+				<th>Summary</th>
+			</tr>
+		</thead>
+
+		<tbody>
+			@foreach (var artist in Model.Artists)
+			{
+				<tr style="padding-bottom:10px;">
+					<td style="font-size:larger;"><strong><a href="@(artist.Url)">@(artist.Name)</a></strong></td>
+					<td style="text-align:right;">@(artist.Listeners)</td>
+					<td style="text-align:right;">@(artist.PlayCount)</td>
+					<td>@((artist.Tags != null && artist.Tags.Count > 0) ? artist.Tags.Aggregate((i, j) => i + ", " + j) : null)</td>
+					<td>@(Html.Raw(artist.Summary))</td>
+				</tr>
+			}
+		</tbody>
+
+	</table>
+}
