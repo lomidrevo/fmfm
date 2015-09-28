@@ -15,7 +15,7 @@ namespace fmfm.Controllers
 		// GET: Artists
 		public ActionResult Index()
 		{
-			return View();
+			return View(new ArtistsViewModel());
 		}
 
 		[HttpPost]
