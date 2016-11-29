@@ -59,9 +59,9 @@ namespace fmfm.Controllers
 				}
 				while (p >= 1);
 
-				contentCsv = string.Join("\r\n", songs.OrderByDescending(s => s.Key).Select(s => s.Value));
+				contentCsv = string.Join("<br/>", songs.OrderByDescending(s => s.Key).Select(s => s.Value));
 
-				return Content(contentCsv, "text/plain");
+				return Content(contentCsv, "text/html");
 			}
 			catch (Exception ex)
 			{
