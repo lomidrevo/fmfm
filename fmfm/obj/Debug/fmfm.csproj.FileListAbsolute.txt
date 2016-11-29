@@ -24,3 +24,9 @@ C:\filip\programming\_projects\fmfm\fmfm\bin\Newtonsoft.Json.xml
 C:\filip\programming\_projects\fmfm\fmfm\obj\Debug\fmfm.csprojResolveAssemblyReference.cache
 C:\filip\programming\_projects\fmfm\fmfm\obj\Debug\fmfm.dll
 C:\filip\programming\_projects\fmfm\fmfm\obj\Debug\fmfm.pdb
+C:\filip\programming\_projects\fmfm\fmfm\bin\System.Net.Http.Formatting.dll
+C:\filip\programming\_projects\fmfm\fmfm\bin\System.Web.Http.dll
+C:\filip\programming\_projects\fmfm\fmfm\bin\System.Web.Http.WebHost.dll
+C:\filip\programming\_projects\fmfm\fmfm\bin\System.Net.Http.Formatting.xml
+C:\filip\programming\_projects\fmfm\fmfm\bin\System.Web.Http.xml
+C:\filip\programming\_projects\fmfm\fmfm\bin\System.Web.Http.WebHost.xml
