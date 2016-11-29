@@ -18,6 +18,9 @@ namespace fmfm.Controllers
 		{
 			try
 			{
+				if (p.HasValue && p.Value > 100)
+					throw new ArgumentOutOfRangeException("p");
+
 				var contentCsv = string.Empty;
 
 				var songs = new Dictionary<DateTime, string>();
@@ -56,13 +59,13 @@ namespace fmfm.Controllers
 				}
 				while (p >= 1);
 
-				contentCsv = string.Join("<br/>", songs.OrderByDescending(s => s.Key).Select(s => s.Value));
+				contentCsv = string.Join("\r\n", songs.OrderByDescending(s => s.Key).Select(s => s.Value));
 
-				return Content(contentCsv);
+				return Content(contentCsv, "text/plain");
 			}
 			catch (Exception ex)
 			{
-				return Content(ex.ToString());
+				return Content(ex.ToString(), "text/html");
 			}
 		}
 
