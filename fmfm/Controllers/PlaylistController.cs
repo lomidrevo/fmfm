@@ -16,6 +16,7 @@ namespace fmfm.Controllers
 		// GET: Playlist
 		public ActionResult Index(int? p = 1)
 		{
+			var actualTable = string.Empty;
 			try
 			{
 				if (p.HasValue && p.Value > 100)
@@ -36,7 +37,9 @@ namespace fmfm.Controllers
 					var tableLength = response.IndexOf("</table>", tableStart) - tableStart + "</table>".Length;
 
 					var xmlResponse = new XmlDocument();
-					xmlResponse.LoadXml(response.Substring(tableStart, tableLength));
+
+					actualTable = response.Substring(tableStart, tableLength);
+					xmlResponse.LoadXml(actualTable);
 
 					var nodes = xmlResponse.SelectNodes("/table/tbody/tr");
 					foreach (XmlNode node in nodes)
@@ -65,7 +68,7 @@ namespace fmfm.Controllers
 			}
 			catch (Exception ex)
 			{
-				return Content(ex.ToString(), "text/html");
+				return Content(ex.ToString() + "<br/><br/>" + HttpUtility.HtmlEncode(actualTable), "text/html");
 			}
 		}
 
@@ -74,5 +77,4 @@ namespace fmfm.Controllers
 			return CultureInfo.CurrentCulture.TextInfo.ToTitleCase(str.ToLower());
 		}
 	}
-
 }
