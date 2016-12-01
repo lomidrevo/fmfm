@@ -63,7 +63,7 @@ namespace fmfm.Controllers
 				while (p >= 1);
 
 				if (songs.Count > 0)
-					contentCsv = string.Join("", songs.OrderByDescending(s => s.Key).Select(s => s.Value));
+					contentCsv = "<html><body>" + string.Join("<br/>", songs.OrderByDescending(s => s.Key).Select(s => s.Value)) + "</body></html>";
 				else
 					contentCsv = "nothing here :(";
 
